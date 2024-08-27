@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Aplicacion_PM</string>
+    <string name="label_ingrese_nombre">Ingrese su nombre:</string>
+    <string name="button_mostrar_nombre">Mostrar nombre</string>
+    <string name="button_siguiente_pantalla">Ir a la siguiente pantalla</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="Bienvenido">Bienvenido:</string>
+</resources>
