@@ -1,16 +1,27 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="188dp"
+        android:layout_height="174dp"
+        android:layout_gravity="center"
+        android:src="@raw/goku"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+    />
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/label_ingrese_nombre"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editText"
@@ -25,11 +36,19 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_mostrar_nombre"/>
+        android:text="@string/button_mostrar_nombre"
+        android:layout_gravity="center"/>
+    />
 
     <Button
         android:id="@+id/buttonNextActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_siguiente_pantalla"/>
+        android:text="@string/button_siguiente_pantalla"
+        android:layout_gravity="center"/>
+
+    />
+
+
+
 </LinearLayout>

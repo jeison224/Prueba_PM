@@ -21,13 +21,18 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextName = findViewById(R.id.editText);
         Button buttonShowName = findViewById(R.id.button);
         Button buttonNextActivity = findViewById(R.id.buttonNextActivity);
-
+        Persona DatosUsuario;
+        DatosUsuario = new Persona(1034916824, (byte) 24, "Juan", "Perez") ;
         buttonShowName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userName = editTextName.getText().toString();
                 String name = editTextName.getText().toString();
                 Toast.makeText(MainActivity.this, "Hola, " + name, Toast.LENGTH_SHORT).show();
+                Intent PasarDatos = new Intent(MainActivity.this, MainActivity2.class);
+                PasarDatos.putExtra("Nombre",DatosUsuario.getNombre());
+                PasarDatos.putExtra("Edad",DatosUsuario.getEdad());
+                startActivity(PasarDatos);
             }
         });
 
@@ -41,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Log.d(TAG, "Estoy en el OnCREATE");
+        Log.d(TAG,DatosUsuario.getNombre());
+        DatosUsuario.setNombre("Alonso");
+        Log.d(TAG,DatosUsuario.getNombre());
+
         Toast.makeText(this, "Estoy en el OnCREATE", Toast.LENGTH_SHORT).show();
     }
     protected void onStart() {
