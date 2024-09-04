@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">Aplicacion_PM</string>
     <string name="label_ingrese_nombre">Ingrese su nombre:</string>
+    <string name="label_peso">Ingrese su peso:</string>
+    <string name="label_actividad">¿Con que frecuencias hace ejercicio?:</string>
     <string name="button_mostrar_nombre">Mostrar nombre</string>
     <string name="button_siguiente_pantalla">Ir a la siguiente pantalla</string>
     <string name="hint_nombre">Nombre</string>
+    <string name="hint_peso">Peso</string>
+    <string-array name="opciones_actividad">
+        <item>Seleccione</item>
+        <item>2 a 3 dias</item>
+        <item>3 a 5 dias </item>
+        <item>Nunca</item>
+    </string-array>
     <string name="Bienvenido">Bienvenido:</string>
 </resources>
