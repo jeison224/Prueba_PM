@@ -5,32 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class Persona extends AppCompatActivity {
+    String nombre, actividad,peso;
 
-    int id;
-    byte edad;
-    String nombre, apellido;
-
-    public Persona(int id, byte edad, String nombre, String apellido) {
-        this.id = id;
-        this.edad = edad;
+    public Persona(String nombre, String peso, String actividad) {
         this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public byte getEdad() {
-        return edad;
-    }
-
-    public void setEdad(byte edad) {
-        this.edad = edad;
+        this.peso = peso;
+        this.actividad = actividad;
     }
 
     public String getNombre() {
@@ -40,12 +20,19 @@ public class Persona extends AppCompatActivity {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getApellido() {
-        return apellido;
+    public String getPeso() {
+        return peso;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
     }
 }

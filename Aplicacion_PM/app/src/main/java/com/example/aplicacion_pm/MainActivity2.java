@@ -18,10 +18,21 @@ public class MainActivity2 extends AppCompatActivity {
         TextView textViewWelcome = findViewById(R.id.Bienvenida);
         Button buttonBack = findViewById(R.id.buttonBack);
 
+        // Obtener los datos del Intent
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("USER_NAME");
+        String nombre = intent.getStringExtra("Nombre");
+        String peso = intent.getStringExtra("Peso");
+        String actividad = intent.getStringExtra("Actividad Fisica");
 
-        textViewWelcome.setText("Bienvenido: " + userName);
+        // Mostrar los datos en la interfaz
+        TextView TextNombre = findViewById(R.id.textNombre);
+        TextView TextPeso = findViewById(R.id.textPeso);
+        TextView TextActividad = findViewById(R.id.textActividad);
+
+        textViewWelcome.setText("Bienvenido: " + nombre);
+        TextNombre.setText("Nombre: " + nombre);
+        TextPeso.setText("Peso: " + peso);
+        TextActividad.setText("Actividad Física: " + actividad);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
