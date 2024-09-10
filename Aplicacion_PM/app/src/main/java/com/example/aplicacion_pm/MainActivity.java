@@ -1,9 +1,11 @@
 package com.example.aplicacion_pm;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,8 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ActivityResultLauncher<Intent> takePictureLauncher;
+
     String TAG = "Test";
     Persona DatosUsuario;
 
@@ -23,9 +32,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button botonCamara = findViewById(R.id.buttonCamara);
         final EditText Nombre = findViewById(R.id.EditNombre);
         final EditText Peso = findViewById(R.id.EditPeso);
         Spinner Actividad = findViewById(R.id.Opc_Actividad);
+
+        // Configurar el ActivityResultLauncher para la cámara
+        takePictureLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                // Manejar el resultado aquí si es necesario
+                Toast.makeText(this, "Foto tomada", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "No se pudo tomar la foto", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Configurar el Spinner con un adaptador
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones_actividad, android.R.layout.simple_spinner_item);
@@ -89,8 +109,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(PasarDatos);
             }
         });
+
+        //boton del intent comun para abirir la camara
+        botonCamara.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        });
         Log.d(TAG, "Estoy en el OnCREATE");
         Toast.makeText(this, "Estoy en el OnCREATE", Toast.LENGTH_SHORT).show();
+    }
+
+    // Método para iniciar el Intent de la cámara
+    private void dispatchTakePictureIntent() {
+        Intent Tomarfoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (Tomarfoto.resolveActivity(getPackageManager()) != null) {
+            takePictureLauncher.launch(Tomarfoto);
+        } else {
+            Toast.makeText(this, "No se encontró una aplicación de cámara", Toast.LENGTH_SHORT).show();
+        }
     }
     protected void onStart() {
         super.onStart();

@@ -1,19 +1,31 @@
 <LinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/blue_gray"
     android:padding="16dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="188dp"
-        android:layout_height="174dp"
+
+    <LinearLayout
+        android:layout_width="356dp"
+        android:layout_height="184dp"
+        android:orientation="vertical"
         android:layout_gravity="center"
-        android:src="@raw/goku"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp" />
+        android:gravity="center"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="188dp"
+            android:layout_height="171dp"
+            android:layout_gravity="center"
+            android:src="@raw/goku"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,13 +35,12 @@
         android:background="@drawable/rounded_background"
         android:padding="16dp"
         >
-
-
         <TextView
             android:id="@+id/Nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_ingrese_nombre"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <EditText
@@ -46,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_peso"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <EditText
@@ -54,7 +66,7 @@
             android:layout_height="wrap_content"
             android:autofillHints="name"
             android:hint="@string/hint_peso"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:minHeight="48dp" />
 
         <TextView
@@ -62,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_actividad"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <Spinner
@@ -69,20 +82,54 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
-            android:entries="@array/opciones_actividad" />
+            android:entries="@array/opciones_actividad"/>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:text="@string/button_mostrar_nombre" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            android:background="@drawable/background2"
+            android:padding="16dp"
+            android:weightSum="3"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/buttonNextActivity"
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/botones"
+                android:text="@string/button_mostrar_nombre"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/buttonNextActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/botones"
+                android:text="@string/button_siguiente_pantalla"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+            android:id="@+id/buttonCamara"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:text="@string/button_siguiente_pantalla" />
+            android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:background="@drawable/botones"
+                android:text="@string/button_camara"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</LinearLayout
+    >

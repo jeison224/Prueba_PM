@@ -5,6 +5,7 @@
     <string name="label_actividad">¿Con que frecuencias hace ejercicio?:</string>
     <string name="button_mostrar_nombre">Mostrar nombre</string>
     <string name="button_siguiente_pantalla">Ir a la siguiente pantalla</string>
+    <string name="button_camara">Tomar Foto</string>
     <string name="hint_nombre">Nombre</string>
     <string name="labelNombre">Nombre:</string>
     <string name="labelPeso">Peso en KG:</string>
@@ -19,4 +20,11 @@
         <item>Nunca</item>
     </string-array>
     <string name="Bienvenido">Bienvenido:</string>
+    <string name="regresar">Regresar</string>
+    <string name="peso_kg">Peso (kg)</string>
+    <string name="altura_cm">Altura (cm)</string>
+    <string name="edad_a_os">Edad (años)</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
+    <string name="siguiente">Siguiente</string>
 </resources>
