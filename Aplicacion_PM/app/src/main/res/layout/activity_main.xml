@@ -1,11 +1,26 @@
-<LinearLayout
-
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Imagen de fondo -->
+    <ImageView
+        android:id="@+id/imagenfondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@raw/gym"/>
+
+    <!-- Oscurecimiento leve -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- Color negro con 50% de opacidad -->
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/blue_gray"
     android:padding="16dp">
 
 
@@ -32,9 +47,16 @@
         android:layout_height="match_parent"
         android:elevation="10dp"
         android:orientation="vertical"
-        android:background="@drawable/rounded_background"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="16dp">
+
         <TextView
             android:id="@+id/Nombre"
             android:layout_width="match_parent"
@@ -51,8 +73,18 @@
             android:hint="@string/hint_nombre"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
             android:id="@+id/Peso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,68 +100,35 @@
             android:hint="@string/hint_peso"
             android:inputType="number"
             android:minHeight="48dp" />
-
-        <TextView
-            android:id="@+id/Actividad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_actividad"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/Opc_Actividad"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/opciones_actividad"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="5dp"
-            android:orientation="vertical"
-            android:background="@drawable/background2"
-            android:padding="16dp"
-            android:weightSum="3"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/botones"
-                android:text="@string/button_mostrar_nombre"
-                android:textColor="@color/black" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp">
 
             <Button
                 android:id="@+id/buttonNextActivity"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
+                android:layout_margin="5dp"
                 android:background="@drawable/botones"
-                android:text="@string/button_siguiente_pantalla"
-                android:layout_marginBottom="16dp"/>
+                android:text="@string/button_siguiente_pantalla"/>
 
             <Button
             android:id="@+id/buttonCamara"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:background="@drawable/botones"
-                android:text="@string/button_camara"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:textColor="@color/black"
+            android:background="@drawable/botones"
+            android:text="@string/button_camara"/>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout
-    >
+</LinearLayout>
+</FrameLayout>
