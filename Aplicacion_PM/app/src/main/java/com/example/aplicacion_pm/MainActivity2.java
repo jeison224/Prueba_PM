@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -21,10 +22,10 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         // Mostrar los datos en la interfaz
-        TextView TextNombre = findViewById(R.id.textNombre);
-        TextView TextPeso = findViewById(R.id.textPeso);
-        TextView TextActividad = findViewById(R.id.textActividad);
-        TextView textViewWelcome = findViewById(R.id.Bienvenida);
+        //TextView TextNombre = findViewById(R.id.textNombre);
+        //TextView TextPeso = findViewById(R.id.textPeso);
+        //TextView TextActividad = findViewById(R.id.textActividad);
+        //TextView textViewWelcome = findViewById(R.id.Bienvenida);
         Button buttonBack = findViewById(R.id.buttonBack);
         RadioGroup opcinesSexo = findViewById(R.id.Opcsexo);
         EditText edadInput = findViewById(R.id.Textedad);
@@ -39,10 +40,10 @@ public class MainActivity2 extends AppCompatActivity {
         String actividad = intent.getStringExtra("Actividad Fisica");
 
 
-        textViewWelcome.setText("Bienvenido: " + nombre);
-        TextNombre.setText("Nombre: " + nombre);
-        TextPeso.setText("Peso: " + peso);
-        TextActividad.setText("Actividad Física: " + actividad);
+        //textViewWelcome.setText("Bienvenido: " + nombre);
+        //TextNombre.setText("Nombre: " + nombre);
+        //TextPeso.setText("Peso: " + peso);
+        //TextActividad.setText("Actividad Física: " + actividad);
 
         // Inicializar DatosUser
         Datos = new DatosUser("",0,0,0,"","");
@@ -55,18 +56,24 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Acción del botón para capturar datos y pasar a la siguiente Activity
         btnSiguiente.setOnClickListener(v -> {
-            // Capturar datos del usuario
-            int selectedSexoId = opcinesSexo.getCheckedRadioButtonId();
-            RadioButton selectedSexo = findViewById(selectedSexoId);
-            Datos.setSexo(selectedSexo.getText().toString());
-            Datos.setEdad(Integer.parseInt(edadInput.getText().toString()));
-            Datos.setPeso(Float.parseFloat(pesoInput.getText().toString()));
-            Datos.setAltura(Float.parseFloat(alturaInput.getText().toString()));
+            if (opcinesSexo.getCheckedRadioButtonId() !=-1 || edadInput.getText().toString().isEmpty() || pesoInput.getText().toString().isEmpty() || alturaInput.getText().toString().isEmpty()){
+                Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
+            }else {
+                // Capturar datos del usuario
+                int selectedSexoId = opcinesSexo.getCheckedRadioButtonId();
+                RadioButton selectedSexo = findViewById(selectedSexoId);
+                Datos.setSexo(selectedSexo.getText().toString());
+                Datos.setEdad(Integer.parseInt(edadInput.getText().toString()));
+                Datos.setPeso(Float.parseFloat(pesoInput.getText().toString()));
+                Datos.setAltura(Float.parseFloat(alturaInput.getText().toString()));
 
-            // Pasar a la siguiente Activity
-            Intent intentDatoU = new Intent(MainActivity2.this, Pagina3.class);
-            intentDatoU.putExtra("usuario", Datos);
-            startActivity(intentDatoU);
+                // Pasar a la siguiente Activity
+                Intent intentDatoU = new Intent(MainActivity2.this, Pagina3.class);
+                intentDatoU.putExtra("usuario", Datos);
+                startActivity(intentDatoU);
+            }
+
+
         });
 
     }
