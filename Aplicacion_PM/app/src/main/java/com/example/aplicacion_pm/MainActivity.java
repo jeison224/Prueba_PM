@@ -20,11 +20,12 @@ import androidx.activity.result.ActivityResultLauncher;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 200;
     private ActivityResultLauncher<Intent> takePictureLauncher;
 
     String TAG = "Test";
     Persona DatosUsuario;
+    int cont,cont2,cont3,cont4,cont5;
 
 
     @Override
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Button botonCamara = findViewById(R.id.buttonCamara);
         final EditText Nombre = findViewById(R.id.EditNombre);
         final EditText Peso = findViewById(R.id.EditPeso);
-        Spinner Actividad = findViewById(R.id.Opc_Actividad);
 
         // Configurar el ActivityResultLauncher para la cámara
         takePictureLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -47,50 +47,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar el Spinner con un adaptador
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.opciones_actividad, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Actividad.setAdapter(adapter);
-
         //Objeto con valores iniciales
         DatosUsuario = new Persona("","", "") ;
 
-        //Capturo la opcion que se seleccione del spinner
-        Actividad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String OpcionSelec = parent.getItemAtPosition(position).toString();
-                DatosUsuario.setActividad(OpcionSelec);  // Asignar la actividad a la clase Persona
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Si no se selecciona ninguna opción
-            }
-        });
         //botones para mostrar el nombre
-        Button buttonShowName = findViewById(R.id.button);
+        Button buttonShowName = findViewById(R.id.buttonNextActivity);
         Button buttonNextActivity = findViewById(R.id.buttonNextActivity);
-
-        buttonShowName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nombre = Nombre.getText().toString();
-                String peso = Peso.getText().toString();
-                DatosUsuario.setPeso(peso);
-                DatosUsuario.setNombre(nombre);
-
-
-                String actividad = DatosUsuario.getActividad();
-                Toast.makeText(MainActivity.this, "Hola, " + nombre, Toast.LENGTH_SHORT).show();
-
-                Intent PasarDatos = new Intent(MainActivity.this, MainActivity2.class);
-                PasarDatos.putExtra("Nombre",DatosUsuario.getNombre());
-                PasarDatos.putExtra("Peso",DatosUsuario.getPeso());
-                PasarDatos.putExtra("Actividad Fisica",actividad);
-                startActivity(PasarDatos);
-            }
-        });
 
         buttonNextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,35 +94,40 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "Estoy en el OnStart");
-        Toast.makeText(this, "Estoy en el OnStart", Toast.LENGTH_SHORT).show();
+        cont+=1;
+        Log.d(TAG, "Estoy en el OnStart" );
+        Toast.makeText(this, "Estoy en el OnStart "+ cont , Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        cont2+=1;
         Log.d(TAG, "Estoy en el OnResume");
-        Toast.makeText(this, "Estoy en el OnResume", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Estoy en el OnResume "+cont2, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        cont3+=1;
         Log.d(TAG, "Estoy en el OnPause");
-        Toast.makeText(this, "Estoy en el OnPause", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Estoy en el OnPause "+cont3, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        cont4+=1;
         Log.d(TAG, "Estoy en el Stop");
-        Toast.makeText(this, "Estoy en el Stop", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Estoy en el Stop "+cont4, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        cont5+=1;
         Log.d(TAG, "Estoy en el Destroy");
-        Toast.makeText(this, "Estoy en el Destroy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Estoy en el Destroy "+cont5, Toast.LENGTH_SHORT).show();
     }
 }

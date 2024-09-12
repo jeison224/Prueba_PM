@@ -56,7 +56,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Acción del botón para capturar datos y pasar a la siguiente Activity
         btnSiguiente.setOnClickListener(v -> {
-            if (opcinesSexo.getCheckedRadioButtonId() !=-1 || edadInput.getText().toString().isEmpty() || pesoInput.getText().toString().isEmpty() || alturaInput.getText().toString().isEmpty()){
+            if (opcinesSexo.getCheckedRadioButtonId() ==-1 || edadInput.getText().toString().isEmpty() || pesoInput.getText().toString().isEmpty() || alturaInput.getText().toString().isEmpty()){
                 Toast.makeText(this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
             }else {
                 // Capturar datos del usuario
